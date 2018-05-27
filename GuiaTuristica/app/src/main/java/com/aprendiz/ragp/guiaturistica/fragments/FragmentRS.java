@@ -121,6 +121,7 @@ public class FragmentRS extends Fragment {
         }else{
             Constants.mode_listener=Constants.mode_list;
         }
+
         if (MainActivity.cargaR==1){
             adapterMa = new AdapterMa(datoslista1);
             recyclerView.setAdapter(adapterMa);
@@ -138,13 +139,44 @@ public class FragmentRS extends Fragment {
                             recyclerView.setAdapter(adapterMa1);
                             recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
                             recyclerView.setHasFixedSize(true);
-                        }
-                        if (Constants.mode_listener == Constants.mode_grid) {
+
+                            adapterMa1.setMlistener(new AdapterMa.OnClickListener() {
+                                @Override
+                                public void itemClick(int position) {
+                                    tmpS=datoslista1.get(position);
+                                    if (MainActivity.orien== Surface.ROTATION_90 || MainActivity.orien== Surface.ROTATION_270){
+                                        image1.setImageResource(datoslista1.get(position).getImagen());
+                                        textdesL.setText(datoslista1.get(position).getDescripcion());
+                                    }else{
+                                        Intent intent1 = new Intent(getActivity(), Detalle_items.class);
+                                        startActivity(intent1);
+                                    }
+                                }
+                            });
+
+                        }else
+                            if(Constants.mode_listener == Constants.mode_grid) {
                             Constants.mode_listener = Constants.mode_list;
                             AdapterMa adapterMa1 = new AdapterMa(datoslista1);
                             recyclerView.setAdapter(adapterMa1);
                             recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
                             recyclerView.setHasFixedSize(true);
+
+                                adapterMa1.setMlistener(new AdapterMa.OnClickListener() {
+                                    @Override
+                                    public void itemClick(int position) {
+                                        tmpS=datoslista1.get(position);
+                                        if (MainActivity.orien== Surface.ROTATION_90 || MainActivity.orien== Surface.ROTATION_270){
+                                            image1.setImageResource(datoslista1.get(position).getImagen());
+                                            textdesL.setText(datoslista1.get(position).getDescripcion());
+                                        }else{
+                                            Intent intent1 = new Intent(getActivity(), Detalle_items.class);
+                                            startActivity(intent1);
+                                        }
+                                    }
+                                });
+
+
                         }
                     }
                 });
@@ -180,20 +212,50 @@ public class FragmentRS extends Fragment {
                 btnS.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         if (Constants.mode_listener == Constants.mode_list) {
                             Constants.mode_listener = Constants.mode_grid;
-                            AdapterMa adapterMa1 = new AdapterMa(datoslista1);
+                            AdapterMa adapterMa1 = new AdapterMa(datoslista2);
                             recyclerView.setAdapter(adapterMa1);
                             recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
                             recyclerView.setHasFixedSize(true);
-                        }
-                        else {
+
+                            adapterMa1.setMlistener(new AdapterMa.OnClickListener() {
+                                @Override
+                                public void itemClick(int position) {
+                                    tmpS=datoslista2.get(position);
+                                    if (MainActivity.orien== Surface.ROTATION_90 || MainActivity.orien== Surface.ROTATION_270){
+                                        image1.setImageResource(datoslista2.get(position).getImagen());
+                                        textdesL.setText(datoslista2.get(position).getDescripcion());
+                                    }else{
+                                        Intent intent1 = new Intent(getActivity(), Detalle_items.class);
+                                        startActivity(intent1);
+                                    }
+                                }
+                            });
+
+                        }else {
                             if (Constants.mode_listener == Constants.mode_grid) {
                                 Constants.mode_listener = Constants.mode_list;
-                                AdapterMa adapterMa1 = new AdapterMa(datoslista1);
+                                AdapterMa adapterMa1 = new AdapterMa(datoslista2);
                                 recyclerView.setAdapter(adapterMa1);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                                 recyclerView.setHasFixedSize(true);
+
+                                adapterMa1.setMlistener(new AdapterMa.OnClickListener() {
+                                    @Override
+                                    public void itemClick(int position) {
+                                        tmpS=datoslista2.get(position);
+                                        if (MainActivity.orien== Surface.ROTATION_90 || MainActivity.orien== Surface.ROTATION_270){
+                                            image1.setImageResource(datoslista2.get(position).getImagen());
+                                            textdesL.setText(datoslista2.get(position).getDescripcion());
+                                        }else{
+                                            Intent intent1 = new Intent(getActivity(), Detalle_items.class);
+                                            startActivity(intent1);
+                                        }
+                                    }
+                                });
+
                             }
                         }
                     }
@@ -232,19 +294,53 @@ public class FragmentRS extends Fragment {
 
                         if (Constants.mode_listener == Constants.mode_list) {
                             Constants.mode_listener = Constants.mode_grid;
-                            AdapterMa adapterMa1 = new AdapterMa(datoslista1);
+                            AdapterMa adapterMa1 = new AdapterMa(datoslista3);
                             recyclerView.setAdapter(adapterMa1);
                             recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
                             recyclerView.setHasFixedSize(true);
+
+
+                            adapterMa1.setMlistener(new AdapterMa.OnClickListener() {
+                                @Override
+                                public void itemClick(int position) {
+                                    tmpS=datoslista3.get(position);
+                                    if (MainActivity.orien== Surface.ROTATION_90 || MainActivity.orien== Surface.ROTATION_270){
+                                        image1.setImageResource(datoslista3.get(position).getImagen());
+                                        textdesL.setText(datoslista3.get(position).getDescripcion());
+                                    }else{
+                                        Intent intent1 = new Intent(getActivity(), Detalle_items.class);
+                                        startActivity(intent1);
+                                    }
+                                }
+                            });
+
                         }else {
                             if (Constants.mode_listener == Constants.mode_grid) {
                                 Constants.mode_listener = Constants.mode_list;
-                                AdapterMa adapterMa1 = new AdapterMa(datoslista1);
+                                AdapterMa adapterMa1 = new AdapterMa(datoslista3);
                                 recyclerView.setAdapter(adapterMa1);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                                 recyclerView.setHasFixedSize(true);
+
+                                adapterMa1.setMlistener(new AdapterMa.OnClickListener() {
+                                    @Override
+                                    public void itemClick(int position) {
+                                        tmpS=datoslista3.get(position);
+                                        if (MainActivity.orien== Surface.ROTATION_90 || MainActivity.orien== Surface.ROTATION_270){
+                                            image1.setImageResource(datoslista3.get(position).getImagen());
+                                            textdesL.setText(datoslista3.get(position).getDescripcion());
+                                        }else{
+                                            Intent intent1 = new Intent(getActivity(), Detalle_items.class);
+                                            startActivity(intent1);
+                                        }
+                                    }
+                                });
+
                             }
                         }
+
+
+
                     }
                 });
             }
@@ -269,6 +365,8 @@ public class FragmentRS extends Fragment {
 
         return v;
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
